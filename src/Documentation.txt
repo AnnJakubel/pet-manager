@@ -1,0 +1,79 @@
+DOKUMENTATSIOON
+Autor: Annabel JAkubel
+
+19.12.2022 (Aeg: 3h36m)
+    Alustasin varasemalt ühe projektiga,
+    kuid avastasin, et polnud Spring Intializr puhul kasutanud kõige
+    uuemaid tehnoloogiaid, projekt ise ei tahtnud tööle minna
+    ning osad dependency-d olid puudu.
+    Genereerisin uue projektipõhja.
+
+    1. Spring Initializr projekti genereerimine
+    2. Pets andmemudeli valmis tegemine
+    3. PostgreSQL andmebaasi loomine ning selle ühendamine projektiga.
+        Probleem: Port 8080 already in use.
+        Lahendus: Kahtlustan, et see juhtus, kuna panin PgAdmin-ist mitu andmebaasi käima,
+        määrasin application.properties failis server.port numbriks 8090 praeguseks, proovin hiljem muuta.
+
+    4. Git Bash-i abil Master branchi nime muutmine main-iks.
+    5. Esmane Commit ja Push Githubi
+    6. PetControlleri, PetService ja PetRepository loomine, nende sidumine omavahel.
+    7. Postmanis PetControlleri testimine
+        Probleem: 401 Unauthorized
+
+20.12.2022
+    Alustasin veelkord uue projekti genereerimisega, kui mõistsin,
+    et PostgreSQL andmebaasi pole siia juurde vaja (ei läheks 1 klikiga tööle)
+    Kordasin varasemaid samme Controllerite jms klasside ülesehitamisega.
+    ___
+
+    Probleem:
+    Error: Liquibase failed to start because no changelog could be found at
+    'classpath:/db/changelog/db.changelog-master.yaml'.
+
+    Lahendus: Lahendamas, installimas Liquidbase omale arvutisse ning
+    püüan aru saada kuidas sealt edasi.
+    Leidsin avalikust dokumentatsioonist näite, kuidas üles seada puuduv changelog-master fail
+    ___
+
+    Probleem:
+    Error: Port 8080 already in use.
+
+    Lahendus: Otsin üles, mis kasutab. Leidsin läbi stackoverflow, Windows Resource Monitor-i kuidas
+    lõpetada protsess.Projekt läks lõpuks käima.
+    ___
+
+    1. Kohandan changelog-master failis tabelikuju,
+    püüan aru saada kas seda on vaja otseselt ette anda,testin.
+        -Tundub, et läheb tööle ilma changelogi antud tabelikujuta. Tulen hiljem tagasi selle juurde.
+    2. Testin läbi Postmani PetControlleri HTTP Request-e.
+        -Error:  "message": "could not prepare statement;
+        SQL [insert into pet (id, country_of_origin, fur_color, type) values (default, ?, ?, ?)]"
+
+        Lahendus: H2 adnmebaasi tekitamine ja ühendamine, vaatan selleks otsingule vastavaid videosid,
+        et tutvuda H2-ga lähemalt.
+
+    ___
+
+    Kestvad probleemid H2 ühendamisega, muudan Liquidbase ja H2 puhul pom.xml failis parameetreid,
+    muudan data.sql ja schema.sql faile, kuid alati annab kas üks või teine errori.
+
+    Praegu on komistuskivi kogenematus H2, LiquidBase ja SQL skriptidega.
+    Andmebaasid on vaid senini tuttavad olnud läbi PostgreSQL-i.
+
+    ERROR: Error creating bean with name 'liquibase' defined in class path resource
+    [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]
+    org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+
+    Lahendus: application.properties panna username ja parool üles.
+    Lahendas probleemi ära, kuid andis uue alloleva errori.
+    ___
+
+    ERROR: Failed to execute SQL script statement #1 of URL
+    [file:/C:/Users/mixus/OneDrive/T%c3%b6%c3%b6laud/Projects/pet-manager/target/classes/data.sql]:
+    INSERT INTO PETS (animal_type, fur_color, country_of_origin) VALUES ( ('DOG', 'Golden', 'Estonia') )
+
+    Vahemõte: Ilmselgelt mul on mingi viga SQL skriptide kirjutamisega. Püüan otsida süntaksi välja
+    ning edasi aru saada kuidas H2 ja Liquibase omavahel toimivad.
+    Kahtlustan, et võibolla pole data.sql vaja ja tabeli esmane täitmine võib läbi changelog-master
+    faili hoopis käia. Katsetan.
