@@ -18,5 +18,5 @@ public class Pet {
     private Long id;
     private String animalType;
     private String furColor;
-    private String countryOfOrigin;
+    private String cOfOrigin;
 }

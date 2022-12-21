@@ -21,7 +21,7 @@ Autor: Annabel JAkubel
     7. Postmanis PetControlleri testimine
         Probleem: 401 Unauthorized
 
-20.12.2022
+20.12.2022 (Aeg: 3h)
     Alustasin veelkord uue projekti genereerimisega, kui mõistsin,
     et PostgreSQL andmebaasi pole siia juurde vaja (ei läheks 1 klikiga tööle)
     Kordasin varasemaid samme Controllerite jms klasside ülesehitamisega.
@@ -77,3 +77,28 @@ Autor: Annabel JAkubel
     ning edasi aru saada kuidas H2 ja Liquibase omavahel toimivad.
     Kahtlustan, et võibolla pole data.sql vaja ja tabeli esmane täitmine võib läbi changelog-master
     faili hoopis käia. Katsetan.
+
+    ___
+
+21.12.2022
+
+    Püüan jälgida tutoriale, kuid kõik vormistavad väga erinevalt faile,
+    siiani ei saa korralikult aru kuidas H2 ja Liquibase peaksid just koos toimima.
+    Arvan, et sain vähemalt pom.xml faili õigeks.
+    Lisaks annab H2 millegipärast riikide listi collationi all.
+    Kahtlustan, et countryOfOrigin muutuja pärast, kuid see tekib ka pärast seda kui
+    Pet andmemudelis nime ära muutsin.
+
+    Väga palju liquibase näiteid on läbi PostgreSQL-i. Mõtlen kas teha eraldi projekti et katsetada
+    H2 andmebaasi ühendamise ilma liquibase-ita esialgu.
+
+    maveni automaatne Liquibase changeLog faili genereerimine annab errori, proovin ühe tutoriali
+    lõpuni teha, kus teen changeLog faili manuaalset.
+
+    ___
+    Error: Unable to resolve xml entity http:www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd.
+    Vahemõtted: Jõudsin vähemalt nii kaugele, et sain uue errori.
+    Lahendus: Http asemel panna https
+
+    Error: cvc-complex-type.2.3: Element 'databaseChangeLog' cannot have character [children],
+    because the type's content type is element-only.
