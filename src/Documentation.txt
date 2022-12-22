@@ -144,4 +144,7 @@ Autor: Annabel JAkubel
         -Error 405
         Lahendus: Kasutan PetService abi, et muuta vajalikud väljad andmete muutmisel.
             -Toimib
-    4.
+    4.Pet andmemudeli tegemine, et ei lubaks 'null' väärtust.
+        -Backend poolel õnnestus, Postman-is keeldub.
+
+    TODO: USername ja password implementeerimine
