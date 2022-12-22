@@ -140,3 +140,8 @@ Autor: Annabel JAkubel
     1.Postman-i programmi läbi andmete lisamise testimine (@PostMapping)
         -Toimib.
     2.Loomade andmete muutmise võimaluse lisamine.
+    3.Testimine Postman-i abil
+        -Error 405
+        Lahendus: Kasutan PetService abi, et muuta vajalikud väljad andmete muutmisel.
+            -Toimib
+    4.

@@ -6,10 +6,7 @@ import ee.annjakubel.petmanager.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,11 @@ public class PetController {
                 .body(petRepository.findAll());
     }
 
-    @PutMapping
+    @PutMapping("pets")
+    public ResponseEntity<Pet> editPet(@RequestBody Pet pet) {
+        petService.updatePet(pet);
+        petRepository.save(pet);
+        return ResponseEntity.ok()
+                .body(petRepository.findById(pet.getId()).get());
+    }
 }
