@@ -46,6 +46,7 @@ Autor: Annabel JAkubel
     1. Kohandan changelog-master failis tabelikuju,
     püüan aru saada kas seda on vaja otseselt ette anda,testin.
         -Tundub, et läheb tööle ilma changelogi antud tabelikujuta. Tulen hiljem tagasi selle juurde.
+
     2. Testin läbi Postmani PetControlleri HTTP Request-e.
         -Error:  "message": "could not prepare statement;
         SQL [insert into pet (id, country_of_origin, fur_color, type) values (default, ?, ?, ?)]"
@@ -106,10 +107,10 @@ Autor: Annabel JAkubel
 
 22.12.2022
 
-    IntelliJ soovitas Hibernate-st laadida andmebaas.
+    IntelliJ soovitas Hibernate-st laadida andmebaas. Tegin seda.
 
     Error: cvc-elt.1.a: Cannot find the declaration of element 'databaseChangeLog'.
-    Lahendus: Muutsin vastavalt changelog-master.xml failis ära http ja https kus vaja.
+    Lahendus: Muutsin uuesti vastavalt changelog-master.xml failis ära http ja https kus vaja.
 
     ___
 
@@ -117,18 +118,25 @@ Autor: Annabel JAkubel
     classes org.hibernate.cfg.annotations.BasicValueBinder and
     org.hibernate.annotations.common.reflection.ReflectionManager
 
-    Vahemõtted: Eeldan, et Hibernate+l on versioonikonfliktid, kuid alles otsin kuidas neid lahendada.
+    Vahemõtted: Eeldan, et Hibernate-l on versioonikonfliktid, kuid alles otsin kuidas neid lahendada.
     Errorit lähemalt lugedes leidsin, et on kaks erinevat hibernate versiooni tõesti.
 
     Eemaldasin .m2/repository kausta oma arvutist ja laen uuesti alla mvn clean install käsuga.
 
     Laadimisel..
-        Error: Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile (default-compile) on project pet-manager: Fatal error compi
-               ling: error: invalid target release: 19
+        Error: Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile (default-compile)
+        on project pet-manager: Fatal error compiling: error: invalid target release: 19
 
         Lahendus: Lisasin pom.xml faili järgneva koodi:
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
     Error: Web server failed to start. Port 8080 was already in use.
-    Vahemõtted: Jess, tuttav error! Loen seda progressiks, oskan seda lahendada.
+    Vahemõtted: Tuttav error! Loen seda progressiks, oskan seda lahendada.
+    Lahendus: Lõpetada localhost:8080 protsess ning uuesti tööle panna.
+
+    Projekt läks tööle.
+
+    1.Postman-i programmi läbi andmete lisamise testimine (@PostMapping)
+        -Toimib.
+    2.Loomade andmete muutmise võimaluse lisamine.
