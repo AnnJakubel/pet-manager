@@ -1,7 +1,7 @@
 DOKUMENTATSIOON
 Autor: Annabel JAkubel
 
-19.12.2022 (Aeg: 3h36m)
+19.12.2022 (Aeg: 3h 36m)
     Alustasin varasemalt ühe projektiga,
     kuid avastasin, et polnud Spring Intializr puhul kasutanud kõige
     uuemaid tehnoloogiaid, projekt ise ei tahtnud tööle minna
@@ -80,7 +80,7 @@ Autor: Annabel JAkubel
 
     ___
 
-21.12.2022
+21.12.2022 (Aeg: 1h 57min)
 
     Püüan jälgida tutoriale, kuid kõik vormistavad väga erinevalt faile,
     siiani ei saa korralikult aru kuidas H2 ja Liquibase peaksid just koos toimima.
@@ -102,3 +102,33 @@ Autor: Annabel JAkubel
 
     Error: cvc-complex-type.2.3: Element 'databaseChangeLog' cannot have character [children],
     because the type's content type is element-only.
+    ___
+
+22.12.2022
+
+    IntelliJ soovitas Hibernate-st laadida andmebaas.
+
+    Error: cvc-elt.1.a: Cannot find the declaration of element 'databaseChangeLog'.
+    Lahendus: Muutsin vastavalt changelog-master.xml failis ära http ja https kus vaja.
+
+    ___
+
+    Error: Correct the classpath of your application so that it contains compatible versions of the
+    classes org.hibernate.cfg.annotations.BasicValueBinder and
+    org.hibernate.annotations.common.reflection.ReflectionManager
+
+    Vahemõtted: Eeldan, et Hibernate+l on versioonikonfliktid, kuid alles otsin kuidas neid lahendada.
+    Errorit lähemalt lugedes leidsin, et on kaks erinevat hibernate versiooni tõesti.
+
+    Eemaldasin .m2/repository kausta oma arvutist ja laen uuesti alla mvn clean install käsuga.
+
+    Laadimisel..
+        Error: Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile (default-compile) on project pet-manager: Fatal error compi
+               ling: error: invalid target release: 19
+
+        Lahendus: Lisasin pom.xml faili järgneva koodi:
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+    Error: Web server failed to start. Port 8080 was already in use.
+    Vahemõtted: Jess, tuttav error! Loen seda progressiks, oskan seda lahendada.
