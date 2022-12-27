@@ -18,14 +18,14 @@ public class Pet {
     private String name;
 
     @Id
-    private Long id;
+    private Long code;
 
     @NotNull(message = "field must not be null")
-    private String animalType;
+    private String type;
 
     @NotNull(message = "field must not be null")
-    private String furColor;
+    private String color;
 
     @NotNull(message = "field must not be null")
-    private String cOfOrigin;
+    private String country;
 }

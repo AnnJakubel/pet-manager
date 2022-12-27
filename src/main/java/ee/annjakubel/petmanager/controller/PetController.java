@@ -37,6 +37,6 @@ public class PetController {
         petService.updatePet(pet);
         petRepository.save(pet);
         return ResponseEntity.ok()
-                .body(petRepository.findById(pet.getId()).get());
+                .body(petRepository.findById(pet.getCode()).get());
     }
 }

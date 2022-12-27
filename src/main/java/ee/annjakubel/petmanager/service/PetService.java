@@ -12,16 +12,16 @@ public class PetService {
     PetRepository petRepository;
     public Pet updatePet(Pet pet) {
         String newName = pet.getName();
-        String newAnimalType = pet.getAnimalType();
-        String newFurColor = pet.getFurColor();
-        String newCOfOrigin = pet.getCOfOrigin();
+        Long newCode = pet.getCode();
+        String newAnimalType = pet.getType();
+        String newFurColor = pet.getColor();
+        String newCOfOrigin = pet.getCountry();
 
-        Pet updatedPet = petRepository.findById(pet.getId()).get();
+        Pet updatedPet = petRepository.findById(pet.getCode()).get();
         updatedPet.setName(newName);
-        updatedPet.setAnimalType(newAnimalType);
-        updatedPet.setAnimalType(newAnimalType);
-        updatedPet.setFurColor(newFurColor);
-        updatedPet.setCOfOrigin(newCOfOrigin);
+        updatedPet.setType(newAnimalType);
+        updatedPet.setColor(newFurColor);
+        updatedPet.setCountry(newCOfOrigin);
 
         return updatedPet;
     }

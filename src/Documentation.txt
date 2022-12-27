@@ -1,5 +1,13 @@
 DOKUMENTATSIOON
-Autor: Annabel JAkubel
+Autor: Annabel Jakubel
+
+Back-endi käitamine:
+    Projekti back-endi käitamiseks on vaja vaid 'Run' nuppu (roheline kolmnurk) IDE sees vajutada.
+    Projekti back-end asub aadressil http://localhost:8080/pets
+    (Projekti front-end asub aadressil http://localhost:4200)
+___
+
+BACK-END
 
 19.12.2022 (Aeg: 3h 36m)
     Alustasin varasemalt ühe projektiga,
@@ -149,6 +157,7 @@ Autor: Annabel JAkubel
 
  ___
 
- 27.12.2022
+ 27.12.2022 (Aeg: 14min)
     1. Projekti uuesti käivitamine ja testimine Postmani kaudu
     2. CrossOrigin lisamine Controllerile ning edasine töö frontend osas.
+    3. Pet mudeli ära parandamine, et front-endist POST request tuleks läbi, andmemudelid erinesid veidi.
