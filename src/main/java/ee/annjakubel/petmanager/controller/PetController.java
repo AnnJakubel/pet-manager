@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PetController {
 
     @Autowired
@@ -24,6 +25,11 @@ public class PetController {
         petRepository.save(pet);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(petRepository.findAll());
+    }
+
+    @GetMapping("pets")
+    public ResponseEntity<List<Pet>> getAllPets() {
+        return ResponseEntity.ok().body(petRepository.findAll());
     }
 
     @PutMapping("pets")

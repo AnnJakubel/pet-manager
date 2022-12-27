@@ -14,8 +14,10 @@ import lombok.Setter;
 @Entity
 public class Pet {
 
+    @NotNull
+    private String name;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull(message = "field must not be null")
