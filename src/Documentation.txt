@@ -5,6 +5,9 @@ Back-endi käitamine:
     Projekti back-endi käitamiseks on vaja vaid 'Run' nuppu (roheline kolmnurk) IDE sees vajutada.
     Projekti back-end asub aadressil http://localhost:8080/pets
     (Projekti front-end asub aadressil http://localhost:4200)
+
+    Kasutajanimi: user
+    Parool: password
 ___
 
 BACK-END
@@ -161,3 +164,28 @@ BACK-END
     1. Projekti uuesti käivitamine ja testimine Postmani kaudu
     2. CrossOrigin lisamine Controllerile ning edasine töö frontend osas.
     3. Pet mudeli ära parandamine, et front-endist POST request tuleks läbi, andmemudelid erinesid veidi.
+
+___
+29.12.2022 (Aeg: 29min)
+    1.SecurityConfig tegemine
+        Probleem: WebConfigurerAdapted deprecated.
+        Lahendus: SecurityFilterChain kasutus.
+
+        Probleem: antMatchers ja authorizeRequests deprecated
+        Lahendus: RequestMatchers ja authorizeHttpRequests vastavalt.
+    2.UserControlleri loomine
+
+    HTTP Basic Authentication tehtud Baeldung-i tutoriali järgi, kus pidin mõnda asja muutma, mis deprecated juba.
+    3. Testimine. Postmanis toimib kui saata Requestile kaasa "Basic Auth" header,
+        milles user on "user" ja password on "password". Toimib andmete lisamine, muutmine,
+        serveripoolses osas on kõik töökorras.
+___
+
+    Järelkommentaarid:
+    Ei jõudnud kasutajate eristamiseni nii et nad üksteise andmeid ei näeks, kuid usun,
+    et Backend poole pealt oleks SecurityConfig osas saanudolenevalt rollist ka neid eristada.
+    Veel ei ole kokku puutunud, kuidas see otseselt andmebaase mõjutab,
+    kuid usun, et see oleks mulle edukalt õpitav.
+
+    Kõige raskem osa Back-endi poole pealt oli liquibase-i ühendamine. Seda just seetõttu, kuna
+    polnud varem sellegz kokku puutunud.
