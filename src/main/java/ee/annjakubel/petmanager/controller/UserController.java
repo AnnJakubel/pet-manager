@@ -10,7 +10,7 @@ import java.security.Principal;
 import java.util.Base64;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4200/pets")
 public class UserController {
 
     @RequestMapping("login")
@@ -19,7 +19,7 @@ public class UserController {
                 user.getPassword().equals("password");
     }
 
-    @RequestMapping("/user")
+    @RequestMapping("user")
     public Principal user(HttpServletRequest request) {
         String authToken =
                 request.getHeader("Authorization")

@@ -28,8 +28,8 @@ public class SecurityConfig {
         return http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/").permitAll()
-                .requestMatchers("/home").hasRole("USER")
+                .requestMatchers("/login").permitAll()
+                .requestMatchers("/").hasRole("USER")
                 .requestMatchers("/add-pet").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
